@@ -51,3 +51,24 @@ def insert_art_objects(conn, art_objects_data):
         conn.commit()
     except Error as e:
         logging.error(f"Error inserting art objects into SQLite database: {e}")
+
+def insert_ownerships(conn, art_object_id, ownership_data):
+    try:
+        cursor = conn.cursor()
+        for ownership in ownership_data:
+            owner_id = ownership['OwnerID']['value'].split('/')[-1]
+            owner_name = ownership.get('ownerLabel', {}).get('value', None)
+            ownership_from = ownership.get('ownershipFrom', {}).get('value', None)
+            ownership_until = ownership.get('ownnershipUntil', {}).get('value', None)
+            owner_description = ownership.get('ownerDescription', {}).get('value', None)
+            owner_type = ownership.get('ownerTypeLabel', {}).get('value', None)
+            acquisition_method = ownership.get('acquisitionMethodLabel', {}).get('value', None)
+
+            cursor.execute('''
+                INSERT OR IGNORE INTO t_art_owners (ArtObjectID, OwnerID, OwnerName, OwnershipFrom, OwnershipUntil, OwnerDescription, OwnerType, AcquisitionMethod) 
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+                ''', (art_object_id, owner_id, owner_name, ownership_from, ownership_until, owner_description, owner_type, acquisition_method))
+
+        conn.commit()
+    except Error as e:
+        logging.error(f"Error inserting ownerships into SQLite database: {e}")
