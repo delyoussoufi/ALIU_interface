@@ -88,3 +88,31 @@ def fetch_with_backoff(art_object_id):
         except Exception as e:
             logging.error(f"Error fetching data for {art_object_id}: {e}")
             raise
+
+def populate_database():
+    conn = create_connection()
+    if conn is None:
+        return
+
+    try:
+        art_objects_data = fetch_art_objects()
+        insert_art_objects(conn, art_objects_data)
+        logging.info("Art objects inserted successfully.")
+        for i, art_object in enumerate(art_objects_data, start=1):
+            art_object_id = art_object['ArtObjectID']['value']
+            ownership_data = fetch_with_backoff(art_object_id)
+            if ownership_data:
+                insert_ownerships(conn, art_object_id, ownership_data)
+
+            if i % 100 == 0:  # Logging progress every 100 art objects
+                logging.info(f"Processed {i} art objects.")
+
+    except Exception as e:
+        logging.error(f"An error occurred: {e}")
+
+    finally:
+        conn.close()
+        logging.info("Database connection closed.")
+
+if __name__ == '__main__':
+    populate_database()
