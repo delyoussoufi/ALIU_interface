@@ -56,3 +56,35 @@ def fetch_art_objects():
     """)
     sparql.setReturnFormat(JSON)
     return fetch_data_with_retries(sparql)
+
+def fetch_ownership_history(art_object_id):
+    sparql = SPARQLWrapper("https://query.wikidata.org/sparql")
+    sparql.setQuery(f"""
+    SELECT (?owner as ?OwnerID) ?ownerLabel ?ownFrom ?ownUntil ?ownerDescription ?ownerTypeLabel ?acquisitionMethodLabel
+    WHERE {{
+        wd:{art_object_id} wdt:P127 ?owner.
+
+        OPTIONAL {{
+            wd:{art_object_id} p:P127 [ ps:P127 ?owner ; pq:P580 ?ownFrom].
+        }}
+        OPTIONAL {{
+            wd:{art_object_id} p:P127 [ ps:P127 ?owner ; pq:P582 ?ownUntil].
+        }}
+
+        # Request the label for the owner entity
+        ?owner rdfs:label ?ownerLabel .
+        FILTER(LANG(?ownerLabel) = "en")
+
+        OPTIONAL {{ ?owner schema:description ?ownerDescription. FILTER(LANG(?ownerDescription) = "en") }}
+        OPTIONAL {{ ?owner wdt:P31 ?ownerType. ?ownerType rdfs:label ?ownerTypeLabel. FILTER(LANG(?ownerTypeLabel) = "en") }}
+        OPTIONAL {{ wd:{art_object_id} p:P127 [ ps:P127 ?owner ; pq:P217 ?acquisitionMethod]. ?acquisitionMethod rdfs:label ?acquisitionMethodLabel. FILTER(LANG(?acquisitionMethodLabel) = "en") }}
+
+        SERVICE wikibase:label {{ bd:serviceParam wikibase:language "[AUTO_LANGUAGE]" }}
+    }}
+    GROUP BY ?owner ?ownerLabel ?ownFrom ?ownUntil ?ownerDescription ?ownerTypeLabel ?acquisitionMethodLabel
+    LIMIT 100
+    """)
+
+    sparql.setReturnFormat(JSON)
+    return fetch_data_with_retries(sparql)
+
