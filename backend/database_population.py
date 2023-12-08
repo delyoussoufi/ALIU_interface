@@ -72,3 +72,19 @@ def insert_ownerships(conn, art_object_id, ownership_data):
         conn.commit()
     except Error as e:
         logging.error(f"Error inserting ownerships into SQLite database: {e}")
+
+def fetch_with_backoff(art_object_id):
+    attempt = 0
+    while attempt < 5:  # Retry up to 5 times
+        try:
+            return fetch_ownership_history(art_object_id)
+        except HTTPError as e:
+            if e.code == 429:  # Too Many Requests
+                logging.warning("Rate limit hit, backing off...")
+                time.sleep(2 ** attempt)  # Exponential backoff
+                attempt += 1
+            else:
+                raise
+        except Exception as e:
+            logging.error(f"Error fetching data for {art_object_id}: {e}")
+            raise
