@@ -1,8 +1,19 @@
-<!-- ParentComponent Template -->
+<!-- 
 <app-search (searchPerformed)="onSearchPerformed()"></app-search>
 <app-info *ngIf="isInfoVisible"></app-info>
 
 <div>
-    <!-- Other content related to ParentSearchInfoComponent -->
-    <router-outlet></router-outlet> <!-- Placeholder for ParentComponent -->
+
+    <router-outlet></router-outlet> 
+  </div> -->
+<!--  -->
+
+<div class="parent-container">
+    <!-- Other content -->
+    <div class="info-container">
+      <app-search (searchPerformed)="onSearchPerformed()"></app-search>
+      <app-info *ngIf="isInfoVisible"></app-info>
+    </div>
   </div>
+  
+  

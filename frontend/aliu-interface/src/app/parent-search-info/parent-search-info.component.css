@@ -1,0 +1,15 @@
+.parent-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 20px;
+  }
+  
+  .info-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-top: 160px; /* Adjust this margin as needed to create space between other content and info */
+    margin-left:-20px;
+    margin-bottom:-23px;
+  }

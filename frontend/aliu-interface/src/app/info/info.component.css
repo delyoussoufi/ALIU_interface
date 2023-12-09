@@ -3,25 +3,30 @@
     flex-direction: row; /* Horizontal layout */
     align-items: flex-start; /* Align items at the top */
     justify-content: space-between; /* Add space between search and list */
-    top:300px; 
+    top:200px; 
     align-items: center;
-    /* justify-content: space-between; */
-    padding: 20px;
+
   }
   
   .image-container {
     flex: 2;
     max-width: 100%;
-    padding-right: 20px;
+    padding-right:50px;
   }
   
   .text-container {
     flex: 2;
     max-width: 50%;
+    padding-right:150px;
+    padding-left:150px;
   }
   
-  img {
-    max-width: 100%;
-    /* height: auto; */
-  }
+  /* img {
+    max-width: 200%; 
+    max-height: auto;
+  } */
   
+ img {
+    width: 104%; /* Make the image 2 times wider */
+    height: 104%; /* Make the image 2 times taller */
+  }
