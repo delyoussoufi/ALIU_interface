@@ -39,6 +39,25 @@ def get_art_objects():
     except Exception as e:
         return jsonify({"error": str(e)}), 500
 
+@app.route('/artobjects/<art_object_id>', methods=['GET'])
+def get_individual_art_object(art_object_id):
+    try:
+        conn = get_db_connection()
+        cur = conn.cursor()
+        cur.execute('SELECT * FROM t_art_objects WHERE ArtObjectID = ?', (art_object_id,))
+        art_object = cur.fetchone()
+        cur.close()
+        conn.close()
+
+        if art_object:
+            # Convert the row to a dictionary using column names from cur.description
+            art_object_dict = dict(zip([column[0] for column in cur.description], art_object))
+            return jsonify(art_object_dict)
+        else:
+            return jsonify({"error": "Art object not found"}), 404
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
 
 @app.route('/ownerships/<art_object_id>', methods=['GET'])
 def get_ownerships(art_object_id):
