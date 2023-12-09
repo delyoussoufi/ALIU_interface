@@ -28,6 +28,5 @@ CREATE TABLE IF NOT EXISTS t_art_owners (
     OwnerDescription TEXT,
     OwnerType TEXT,
     AcquisitionMethod TEXT,
-    PRIMARY KEY (ArtObjectID, OwnerID),
-    UNIQUE(ArtObjectID, OwnerID, OwnershipFrom)
+    PRIMARY KEY (ArtObjectID, OwnerID, OwnershipFrom)
 );
