@@ -12,6 +12,7 @@ import { AboutComponent } from './about/about.component';
 import { ReportsComponent } from './reports/reports.component';
 import { FooterComponent } from './footer/footer.component';
 import { InfoComponent } from './info/info.component';
+import { ParentSearchInfoComponent } from './parent-search-info/parent-search-info.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { InfoComponent } from './info/info.component';
     AboutComponent,
     ReportsComponent,
     FooterComponent,
-    InfoComponent
+    InfoComponent,
+    ParentSearchInfoComponent
   ],
   imports: [
     BrowserModule,
