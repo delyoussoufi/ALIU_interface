@@ -42,16 +42,22 @@ def get_art_objects():
 
 @app.route('/ownerships/<art_object_id>', methods=['GET'])
 def get_ownerships(art_object_id):
-    conn = get_db_connection()
-    cur = conn.cursor()
-    cur.execute('SELECT * FROM t_art_owners WHERE ArtObjectID = ?', (art_object_id,))
-    ownerships = cur.fetchall()
-    cur.close()
-    conn.close()
+    try:
+        conn = get_db_connection()
+        cur = conn.cursor()
+        cur.execute('SELECT * FROM t_art_owners WHERE ArtObjectID = ?', (art_object_id,))
+        ownerships = cur.fetchall()
+        cur.close()
+        conn.close()
 
-    ownerships_list = [dict(zip([column[0] for column in cur.description], ownership)) for ownership in ownerships]
+        if ownerships:
+            ownerships_list = [dict(zip([column[0] for column in cur.description], ownership)) for ownership in ownerships]
+            return jsonify(ownerships_list)
+        else:
+            return jsonify({"error": "No ownerships found for the specified art object"}), 404
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
 
-    return jsonify(ownerships_list)
 
 if __name__ == '__main__':
     app.run(debug=True)
