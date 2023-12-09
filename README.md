@@ -59,6 +59,11 @@ System Requirements
 Operating System: Compatible with Windows, macOS, and Linux.  
 Python Version: Python 3.9 or higher.  
 
+Development Environment Setup  
+1. Clone the Repository.  
+2. Create and Activate a Virtual Environment.  
+3. Install Dependencies using requirements.txt.  
+4. run the create_database.py and the database_population.py to create and populate the database then app.py to access the Flask API Endpoints.  
 
 ### Main Functionalities
 
