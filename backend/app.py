@@ -34,3 +34,19 @@ def get_art_objects():
 
     art_objects_list = [dict(zip([column[0] for column in cur.description], ao)) for ao in art_objects]
     return jsonify(art_objects_list)
+
+@app.route('/ownerships/<art_object_id>', methods=['GET'])
+def get_ownerships(art_object_id):
+    conn = get_db_connection()
+    cur = conn.cursor()
+    cur.execute('SELECT * FROM t_art_owners WHERE ArtObjectID = ?', (art_object_id,))
+    ownerships = cur.fetchall()
+    cur.close()
+    conn.close()
+
+    ownerships_list = [dict(zip([column[0] for column in cur.description], ownership)) for ownership in ownerships]
+
+    return jsonify(ownerships_list)
+
+if __name__ == '__main__':
+    app.run(debug=True)
