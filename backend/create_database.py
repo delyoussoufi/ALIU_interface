@@ -1,4 +1,4 @@
-from sqlalchemy import create_engine
+from sqlalchemy import create_engine, text
 
 # Define the SQLite URL
 sqlite_url = "sqlite:///artdatabase.db"
@@ -11,8 +11,9 @@ with open('create_schema.sql') as file:
     sql_commands = file.read().split(';')
 
 # Execute each SQL statement individually
-for command in sql_commands:
-    if command.strip() != '':
-        engine.execute(command)
+with engine.connect() as connection:
+    for command in sql_commands:
+        if command.strip() != '':
+            connection.execute(text(command))
 
 print("Database and tables created successfully.")

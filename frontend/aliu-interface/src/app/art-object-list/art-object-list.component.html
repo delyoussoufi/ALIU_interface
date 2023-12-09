@@ -1,1 +1,20 @@
-<p>art-object-list works!</p>
+<div class="search-and-list-container">
+    <!-- Search Component -->
+    <app-search></app-search>
+  
+    <div *ngIf="artObjects.length; else noResults" class="art-objects-list">
+      <ul>
+        <li *ngFor="let artObject of artObjects">
+          <div *ngFor="let key of objectKeys(artObject)">
+            <strong>{{ key }}:</strong> {{ artObject[key] }}
+          </div>
+          <!-- Button to navigate to the art object detail page -->
+          <button [routerLink]="['/art-object', artObject.ArtObjectID]">View Details</button>
+        </li>
+      </ul>
+    </div>
+  
+    <ng-template #noResults>
+      <p>No art objects found.</p>
+    </ng-template>
+  </div>
