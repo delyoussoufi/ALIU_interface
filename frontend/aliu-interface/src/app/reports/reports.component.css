@@ -1,0 +1,33 @@
+.reports {
+    margin: 0px 550px; /* Add left and right margins */
+    font-family: Arial, sans-serif; /* Use your preferred font */
+    line-height: 1.5;
+  }
+  
+  .reports h2 {
+    font-size: 24px; /* Adjust the heading font size */
+    margin-top: 20px; /* Add top margin to headings */
+  }
+  
+  .reports strong {
+    font-weight: bold; /* Apply bold style to strong tags */
+  }
+  
+  .reports ul {
+    list-style-type: disc; /* Use disc bullets for unordered lists */
+    margin-left: 20px; /* Add left margin to lists */
+  }
+  
+  .reports p {
+    margin-top: 10px; /* Add top margin to paragraphs */
+  }
+  
+  .reports a {
+    color: #3498db; /* Link color */
+    text-decoration: none;
+  }
+  
+  .reports a:hover {
+    text-decoration: underline; /* Underline links on hover */
+  }
+  
