@@ -2,7 +2,7 @@
 /venv/
 
 # Database
-
+artdatabase.db
 
 # IDE/Editor specific files
 .vscode/
