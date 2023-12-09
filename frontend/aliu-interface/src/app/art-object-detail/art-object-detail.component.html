@@ -1,1 +1,18 @@
-<p>art-object-detail works!</p>
+<div class="search-and-list-container">
+    <!-- Search Component -->
+    <app-search></app-search>
+
+<div *ngIf="artObject" class="art-object-details">
+    <h2>Art Object Details</h2>
+    <div *ngFor="let key of objectKeys(artObject)">
+      <strong>{{ formatKey(key) }}:</strong> {{ artObject[key] }}
+    </div>
+  
+    <h2>Ownership History</h2>
+      <li *ngFor="let ownership of ownerships">
+        <div *ngFor="let key of objectKeys(ownership)">
+          <strong>{{ formatKey(key) }}:</strong> {{ ownership[key] }}
+        </div>
+      </li>
+  </div>
+</div>

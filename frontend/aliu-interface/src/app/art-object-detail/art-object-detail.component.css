@@ -1,0 +1,15 @@
+.art-object-details {
+    width: calc(100% - 200px); /* Match the width of the art-objects-list */
+    margin-top: 100px; /* Align with the top margin of the art-objects-list */
+    margin-left: 600px; /* Align with the left margin of the art-objects-list */
+  }
+  
+  .art-object-details strong {
+    color: #000;
+  }
+
+  .art-object-details h2 {
+    color: #333;
+    margin-bottom: 15px;
+  }
+  

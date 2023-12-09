@@ -13,4 +13,12 @@ export class ArtDataService {
   searchArtObjects(query: string): Observable<any[]> {
     return this.http.get<any[]>(`${this.apiUrl}/artobjects`, { params: { query } });
   }
+
+  getOwnerships(artObjectId: string): Observable<any[]> {
+    return this.http.get<any[]>(`${this.apiUrl}/ownerships/${artObjectId}`);
+  }
+
+  getArtObjectById(artObjectId: string): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}/artobjects/${artObjectId}`);
+  }
 }
