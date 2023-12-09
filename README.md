@@ -8,11 +8,11 @@ This backend application manages an art database, focusing on art objects and th
 ### Components
 The backend is structured into several key components:
 
-create_schema.sql: SQL script for creating database tables.
-create_database.py: Python script to initialize the database.
-sparql_queries.py: Contains functions to fetch data using SPARQL queries.
-data_population.py: Script for populating the database with fetched data.
-app.py: Flask application providing API endpoints.
+create_schema.sql: SQL script for creating database tables.  
+create_database.py: Python script to initialize the database.  
+sparql_queries.py: Contains functions to fetch data using SPARQL queries.  
+data_population.py: Script for populating the database with fetched data.  
+app.py: Flask application providing API endpoints.  
 
 ### Database Schema
 
@@ -58,3 +58,16 @@ PRIMARY KEY (ArtObjectID, OwnerID): A composite primary key ensuring each combin
 System Requirements  
 Operating System: Compatible with Windows, macOS, and Linux.  
 Python Version: Python 3.9 or higher.  
+
+
+### Main Functionalities
+
+Database Creation and Schema Initialization (create_schema.sql, create_database.py):  
+Initializes a connection to the SQLite database and creates necessary tables.  
+
+Data Fetching and Insertion (sparql_queries.py, data_population.py)  
+Fetches data from Wikidata and populates the database with art objects and ownership history.  
+
+Flask API Endpoints (app.py)  
+GET /artobjects/: Returns a list of art objects with optional search functionality.  
+GET /ownerships/<art_object_id>: Returns ownership history for a specified art object ID.  
