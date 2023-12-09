@@ -48,4 +48,7 @@
       background-color: #c0c0c0;
     }
     
-  
+    app-footer {
+        top: 1000px; /* Adjust the value as needed */
+    }
+    
