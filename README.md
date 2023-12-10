@@ -24,23 +24,16 @@ The backend is structured into several key components:
 
 **Table: t_art_objects**
 
-**ArtObjectID (TEXT, PRIMARY KEY)**: A unique identifier for each art object. Typically starts with "Q".  
-**ArtObjectName (TEXT)**: The name or title of the art object.  
+**ArtObject (TEXT, PRIMARY KEY)**: A unique identifier for each art object. Typically starts with "Q".  
+**ArtObjectLabel (TEXT)**: The name or title of the art object.  
 **ArtObjectDescription (TEXT)**: A detailed description of the art object, including its history, significance, and any other relevant information.  
-**OwnedByID (TEXT)**: The identifier of the current owner of the art object.  
-**OwnedByName (TEXT)**: The name of the current owner of the art object.  
-**ImageURL (TEXT)**: A URL linking to an image of the art object.  
-**CreatorName (TEXT)**: The name of the artist or creator of the art object.  
-**DateOfCreation (TEXT)**: The date when the art object was created. Stored as text to accommodate various date formats.  
-**Material (TEXT)**: The primary materials used in the creation of the art object.  
-**Location (TEXT)**: The current location or display venue of the art object.  
-**Height (DECIMAL)**: The height of the art object, assumed to be in a consistent unit like centimeters or inches.  
-**Width (DECIMAL)**: The width of the art object, also in a consistent unit.  
-**Genre (TEXT)**: The genre or category that the art object belongs to.  
-**Event (TEXT)**: Any significant event associated with the art object.  
-**Source (TEXT)**: The source from where the information about the art object was obtained.  
-**Origin (TEXT)**: The original location or provenance of the art object.  
-**Exhibition (TEXT)**: Information about any exhibitions where the art object has been displayed.  
+**CreationDate (TEXT)**: The date when the art object was created. Stored as text to accommodate various date formats.  
+
+**OwnedBy (TEXT)**: The identifier of the current owner of the art object.  
+**OwnedByLabel(TEXT)**: The name of the current owner of the art object.   
+**Artist (TEXT)**: The identifier of the artist or creator of the art object.  
+**Artist (TEXT)**: The name of the artist or creator of the art object.  
+
 
 **Table: t_art_owners**
 
@@ -75,5 +68,6 @@ Data Fetching and Insertion (sparql_queries.py, data_population.py)
 Fetches data from Wikidata and populates the database with art objects and ownership history.  
 
 Flask API Endpoints (app.py)  
-GET /artobjects/: Returns a list of art objects with optional search functionality.  
-GET /ownerships/<art_object_id>: Returns ownership history for a specified art object ID.  
+http://127.0.0.1:5000/artobjects/ : Returns a list of art objects with optional search functionality.  
+http://127.0.0.1:5000/ownerships/<art_object_id>: Returns ownership history for a specified art object ID.  
+http://127.0.0.1:5000//artobjects/<art_object_id> Returns details for a specified art object ID
