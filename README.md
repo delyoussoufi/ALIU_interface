@@ -37,7 +37,7 @@ The backend is structured into several key components:
 
 **Table: t_art_owners**
 
-**ArtObjectID (TEXT, REFERENCES t_art_objects(ID))**: A reference to the unique identifier of the art object in the t_art_objects table.  
+**ArtObject (TEXT, REFERENCES t_art_objects(ID))**: A reference to the unique identifier of the art object in the t_art_objects table.  
 **OwnerID (TEXT)**: The identifier of an individual or entity that has owned the art object.  
 **OwnerName (TEXT)**: The name of the owner.  
 **OwnershipFrom (TEXT)**: The date from which the ownership started.  
