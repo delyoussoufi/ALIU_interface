@@ -13,7 +13,7 @@ CREATE TABLE IF NOT EXISTS t_art_owners (
     ArtObject TEXT REFERENCES t_art_objects(ArtObject),
     OwnerID TEXT,
     OwnerName TEXT,
-    OwnershipFrom  DATE, 
+    OwnershipFrom DATE, 
     OwnershipUntil DATE, 
     OwnerDescription TEXT,
     OwnerType TEXT,

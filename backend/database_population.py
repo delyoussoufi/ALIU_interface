@@ -53,8 +53,8 @@ def insert_ownerships(conn, art_object_id, ownership_data):
         for ownership in ownership_data:
             owner_id = ownership['OwnerID']['value'].split('/')[-1]
             owner_name = ownership.get('ownerLabel', {}).get('value', None)
-            ownership_from = ownership.get('ownershipFrom', {}).get('value', None)
-            ownership_until = ownership.get('ownnershipUntil', {}).get('value', None)
+            ownership_from = ownership.get('ownFrom', {}).get('value', None)
+            ownership_until = ownership.get('ownUntil', {}).get('value', None)
             owner_description = ownership.get('ownerDescription', {}).get('value', None)
             owner_type = ownership.get('ownerTypeLabel', {}).get('value', None)
             acquisition_method = ownership.get('acquisitionMethodLabel', {}).get('value', None)
