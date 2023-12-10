@@ -1,15 +1,77 @@
 .art-object-details {
-    width: calc(100% - 200px); /* Match the width of the art-objects-list */
-    margin-top: 200px; /* Align with the top margin of the art-objects-list */
-    margin-left: 600px; /* Align with the left margin of the art-objects-list */
-  }
-  
-  .art-object-details strong {
-    color: #000;
-  }
+  width: 100%;
+   max-width: 1200px;  
+  margin-top: 200px;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+  left: 240px; /* Adjust to shift left */
+}
+.art-object-details strong {
+  color: #000;
+}
 
-  .art-object-details h2 {
-    color: #333;
-    margin-bottom: 15px;
-  }
-  
+.art-object-details h2 {
+  color: #333;
+  margin-bottom: 15px;
+}
+
+.timeline {
+  overflow-x: auto;
+  margin-top: 40px;
+  padding: 20px 0;
+  position: relative;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  top: 40px;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background-color: rgb(20, 20, 20); 
+  z-index: 1; 
+}
+
+.timeline-event {
+  display: inline-block;
+  vertical-align: top;
+  position: relative;
+  margin-right: 20px;
+  min-width: 150px;
+}
+
+.timeline-event:before {
+  content: '';
+  background: #ddd;
+  display: block;
+  position: absolute;
+  border-radius: 50%;
+  border: 3px solid #020202;
+  left: 50%;
+  top: 10px; /* Adjust this value to align the dot with the timeline */
+  transform: translateX(-50%);
+  width: 20px;
+  height: 20px;
+  z-index: 2; /* Above the line */
+}
+
+.timeline-content {
+  text-align: center;
+  padding-top: 25px;
+}
+
+.owner-name {
+  font-size: 16px;
+}
+
+.period {
+  font-size: 14px;
+}
+
+.description {
+  font-size: 12px;
+  overflow-wrap: break-word; /* Ensure words wrap */
+  width:100px;
+}

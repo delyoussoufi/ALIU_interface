@@ -14,6 +14,7 @@ import { FooterComponent } from './footer/footer.component';
 import { InfoComponent } from './info/info.component';
 import { ParentSearchInfoComponent } from './parent-search-info/parent-search-info.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,

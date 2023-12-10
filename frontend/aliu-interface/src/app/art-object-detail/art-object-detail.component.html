@@ -14,5 +14,19 @@
           <strong>{{ formatKey(key) }}:</strong> {{ ownership[key] }}
         </div>
       </li>
+
+      <h2>Ownership Timeline</h2>
+      <div class="timeline">
+      <div class="timeline-event" *ngFor="let event of timelineEvents">
+
+        <div class="timeline-content">
+            <h3 class="owner-name">{{ event.ownerName }}</h3>
+            <p class="period">{{ event.period }}</p>
+            <p class="description">{{ event.description }}</p>
+        </div>
+    </div>
+  </div>
+
   </div>
 </div>
+

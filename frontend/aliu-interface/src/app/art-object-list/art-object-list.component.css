@@ -6,7 +6,7 @@
   }
   
   .art-objects-list {
-    width: calc(100% - 200px); /* Adjust the width as needed */
+    width: 100%;
     margin-top: 200px; /* Add spacing between search and list */
     margin-left:550px;
   }
