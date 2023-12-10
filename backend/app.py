@@ -19,10 +19,10 @@ def get_art_objects():
             search_query = f"%{query}%"
             cur.execute("""
                 SELECT * FROM t_art_objects 
-                WHERE ArtObjectName LIKE ?
-                OR ArtObjectID LIKE ?
+                WHERE ArtObject LIKE ?
+                OR ArtObjectLabel LIKE ?
                 OR ArtObjectDescription LIKE ?
-                OR CreatorName LIKE ?
+                OR ArtistLabel LIKE ?
                 """, (search_query, search_query, search_query, search_query))
         else:
             cur.execute('SELECT * FROM t_art_objects')
@@ -44,7 +44,7 @@ def get_individual_art_object(art_object_id):
     try:
         conn = get_db_connection()
         cur = conn.cursor()
-        cur.execute('SELECT * FROM t_art_objects WHERE ArtObjectID = ?', (art_object_id,))
+        cur.execute('SELECT * FROM t_art_objects WHERE ArtObject = ?', (art_object_id,))
         art_object = cur.fetchone()
         cur.close()
         conn.close()
@@ -64,7 +64,7 @@ def get_ownerships(art_object_id):
     try:
         conn = get_db_connection()
         cur = conn.cursor()
-        cur.execute('SELECT * FROM t_art_owners WHERE ArtObjectID = ?', (art_object_id,))
+        cur.execute('SELECT * FROM t_art_owners WHERE ArtObject = ?', (art_object_id,))
         ownerships = cur.fetchall()
         cur.close()
         conn.close()

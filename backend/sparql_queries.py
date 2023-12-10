@@ -22,13 +22,19 @@ def fetch_art_objects():
     sparql.setQuery("""
     SELECT ?artObject ?artObjectLabel ?artObjectDescription ?ownedby ?ownedbyLabel ?creationDate ?artist ?artistLabel
     WHERE {
-        ?artObject wdt:P31 wd:Q3305213 ; # Get items that are instances of painting
-        wdt:P127 ?ownedby. #at least one owner is known in Wikidata
-        ?ownedby wdt:P1840 wd:Q30335959 . #the owner was ALIU Red Flag   
-        OPTIONAL { ?artObject wdt:P571 ?creationDate. } # Get the date of creation of the art object
-        OPTIONAL { ?artObject wdt:P170 ?artist. } # Get the artist of the painting
+    ?artObject wdt:P31 wd:Q3305213; # Get items that are instances of painting
+                wdt:P127 ?ownedby. # At least one owner is known in Wikidata
+    ?artObject rdfs:label ?artObjectLabel.
+    ?ownedby wdt:P1840 wd:Q30335959; # The owner was ALIU Red Flag
+            rdfs:label ?ownedbyLabel.
+    OPTIONAL { ?artObject wdt:P170 ?artist. 
+                ?artist rdfs:label ?artistLabel.
+                FILTER(LANG(?artistLabel) = "en") }
+    OPTIONAL { ?artObject schema:description ?artObjectDescription. FILTER(LANG(?artObjectDescription) = "en") }
+    OPTIONAL { ?artObject wdt:P571 ?creationDate. } # Get the date of creation of the art object
 
-        SERVICE wikibase:label { bd:serviceParam wikibase:language "[AUTO_LANGUAGE]"}
+    FILTER(LANG(?artObjectLabel) = "en")
+    FILTER(LANG(?ownedbyLabel) = "en")
     }
     GROUP BY ?artObject ?artObjectLabel ?artObjectDescription ?ownedby ?ownedbyLabel ?creationDate ?artist ?artistLabel
     ORDER BY ?item
