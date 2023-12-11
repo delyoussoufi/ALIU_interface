@@ -80,9 +80,9 @@ http://127.0.0.1:5000//artobjects/<art_object_id> Returns details for a specifie
 The frontend of ALIU Interface is designed to provide an intuitive and user-friendly interface for accessing and 
 interacting with the ALIU Red Flag Artwork Database.
 
-## Installation Instructions
+### Installation Instructions
 
-To set up the Art Explorer frontend project, please ensure that you have the following tools and dependencies installed:
+To set up the ALIU Interface frontend project, please ensure that you have the following tools and dependencies installed:
 
 1. Node.js: Make sure you have Node.js installed on your system. You can download it from https://nodejs.org/.
 
@@ -97,3 +97,6 @@ To set up the Art Explorer frontend project, please ensure that you have the fol
 ```bash
     npm start 
 ```
+
+### Functionality
+Check the functionality of the interface through the GIF demonstration available at the begining of the documentation.
