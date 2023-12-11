@@ -93,7 +93,7 @@ To set up the Art Explorer frontend project, please ensure that you have the fol
     cd frontend/aliu-interface
     npm install
 ```
-4. Launch both the back end and front end with:  
+4. Launch both the backend and frontend concurrently with:  
 ```bash
     npm start 
 ```
