@@ -34,7 +34,7 @@ The backend is structured into several key components:
 **OwnedBy (TEXT)**: The identifier of the current owner of the art object.  
 **OwnedByLabel(TEXT)**: The name of the current owner of the art object.   
 **Artist (TEXT)**: The identifier of the artist or creator of the art object.  
-**Artist (TEXT)**: The name of the artist or creator of the art object.  
+**ArtistLabel (TEXT)**: The name of the artist or creator of the art object.  
 
 
 **Table: t_art_owners**
@@ -72,4 +72,23 @@ Fetches data from Wikidata and populates the database with art objects and owner
 Flask API Endpoints (app.py)  
 http://127.0.0.1:5000/artobjects/ : Returns a list of art objects with optional search functionality.  
 http://127.0.0.1:5000/ownerships/<art_object_id>: Returns ownership history for a specified art object ID.  
-http://127.0.0.1:5000//artobjects/<art_object_id> Returns details for a specified art object ID
+http://127.0.0.1:5000//artobjects/<art_object_id> Returns details for a specified art object ID.
+
+
+## Frontend
+### Overview 
+The frontend of ALIU Interface is designed to provide an intuitive and user-friendly interface for accessing and 
+interacting with the ALIU Red Flag Artwork Database.
+
+## Installation Instructions
+
+To set up the Art Explorer frontend project, please ensure that you have the following tools and dependencies installed:
+
+1. Node.js: Make sure you have Node.js installed on your system. You can download it from https://nodejs.org/.
+
+2. Angular CLI: Angular CLI is a command-line tool for Angular development. You can install it globally using npm (Node Package Manager).
+
+3. Project Dependencies: After cloning the project repository, navigate to the project folder and install the project dependencies using npm:
+
+    cd frontend/aliu-interface
+    npm install
