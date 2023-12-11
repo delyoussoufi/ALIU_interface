@@ -1,4 +1,6 @@
 # Documentation for the aliu_interface
+
+![Alt text](aliu-interface.gif)
 ## Introduction
 ALIU INTERFACE is a specialized database platform focusing on artworks previously identified with an Art Looting Investigation Unit (ALIU) Red Flag status. This designation indicates potential involvement in looting or illegal transactions during World War II. Our platform serves as a resource for researchers, historians, and art professionals, providing detailed information on these specific art objects.
 ## Backend
