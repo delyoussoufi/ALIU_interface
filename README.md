@@ -89,6 +89,10 @@ To set up the Art Explorer frontend project, please ensure that you have the fol
 2. Angular CLI: Angular CLI is a command-line tool for Angular development. You can install it globally using npm (Node Package Manager).
 
 3. Project Dependencies: After cloning the project repository, navigate to the project folder and install the project dependencies using npm:
-
+```
     cd frontend/aliu-interface
     npm install
+```
+4. Launch both the back end and front end with:  
+
+    npm start 
